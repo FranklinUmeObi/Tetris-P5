@@ -54,5 +54,15 @@ class Piece
           this.shape.map(row => row[index])
         )
   }
-  
+
+
+  canCollide(collision) {
+          return this.shape.reduce( (z, x) => z.concat(x.filter(col => col != null).filter(box => collision(box))), []).length > 0
+      }
+
+
+
+
+
+
 }
