@@ -5,7 +5,7 @@ let gameStarted;
 function setup() {
   createCanvas(canvasW, canvasH);
   myPiece = new Piece(
-    piece_L,
+    piece_T,
     canvasW / 2 - boxDimension * 2,
     boxDimension * 3,
     colors[2]
@@ -57,15 +57,11 @@ let applyGravity = () => {
 function keyPressed() {
   if (keyCode === UP_ARROW) myPiece.rotation();
 
-  if (keyCode === RIGHT_ARROW && !myPiece.canCollide(box => box.x + boxDimension === width)
-  && !platform.piecesColliding(currentPiece, (rect1, rect2) =>
-  rectCollision(rect1, rect2), (box) => box.x += boxDimension))
+  if (keyCode === RIGHT_ARROW)
   myPiece.x += boxDimension;
   myPiece.y -= boxDimension;
 
-  if (keyCode === LEFT_ARROW && !myPiece.canCollide(box => box.x === begginingPoint)
-  && !platform.piecesColliding(myPiece, (rect1, rect2) =>
-  rectCollision(rect1, rect2), (box) => box.x -= boxDimension))
+  if (keyCode === LEFT_ARROW)
   myPiece.x -= boxDimension;
   myPiece.y -= boxDimension;
 
